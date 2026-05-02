@@ -1,6 +1,8 @@
 require('dotenv').config();
-// nvm-installed Node doesn't pick up macOS system CA certs; this fixes TLS for local dev
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+// nvm-installed Node doesn't pick up macOS system CA certs in local dev
+if (process.env.NODE_ENV !== 'production') {
+  process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+}
 const { createClient } = require('@supabase/supabase-js');
 
 const supabase = createClient(
