@@ -9,8 +9,8 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use('/api/auth', authRouter);
-app.use('/api/holdings', authMiddleware, holdingsRouter);
+app.use('/auth', authRouter);
+app.use('/holdings', authMiddleware, holdingsRouter);
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
