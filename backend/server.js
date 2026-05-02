@@ -12,11 +12,9 @@ app.use(express.json());
 app.use('/api/auth', authRouter);
 app.use('/api/holdings', authMiddleware, holdingsRouter);
 
-if (require.main === module) {
-  const PORT = process.env.PORT || 3001;
-  app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-  });
-}
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
+});
 
 module.exports = app;
